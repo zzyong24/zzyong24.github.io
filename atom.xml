@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>月明水清深</title>
   
-  <subtitle>Life is short,show me your code！</subtitle>
+  <subtitle>Life is short, show me your code！</subtitle>
   <link href="https://zzyong24.github.io/atom.xml" rel="self"/>
   
   <link href="https://zzyong24.github.io/"/>
-  <updated>2022-04-09T14:27:25.094Z</updated>
+  <updated>2022-04-09T14:47:09.896Z</updated>
   <id>https://zzyong24.github.io/</id>
   
   <author>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>开始：该博客网站是如何搭建起来的</title>
-    <link href="https://zzyong24.github.io/2022/04/09/da-jian-bo-ke/"/>
-    <id>https://zzyong24.github.io/2022/04/09/da-jian-bo-ke/</id>
+    <link href="https://zzyong24.github.io/2022/04/09/build-blog/"/>
+    <id>https://zzyong24.github.io/2022/04/09/build-blog/</id>
     <published>2022-04-09T13:57:26.000Z</published>
-    <updated>2022-04-09T14:27:25.094Z</updated>
+    <updated>2022-04-09T14:47:09.896Z</updated>
     
-    <content type="html"><![CDATA[<p>欢迎来到我的博客，本篇是博客的开篇，用来介绍该博客是如何搭建起来的。</p><blockquote><p>博客使用<a href="https://github.com/zzyong24/zzyong24.github.io">GitHub</a> + <a href="https://hexo.io/docs/">Hexo</a>进行搭建， 另外，使用到了<a href="https://github.com/blinkfox/hexo-theme-matery">hexo-theme-matery</a>部署主题。网页是一个纯静态页面，因此，不需要服务器就能够发布部署以及访问，相当方便。搭建网站大概花了半天的时间，有兴趣的同学也可以自己尝试进行部署哦！</p><p>接下来让我详细介绍网站是如何一步步搭建部署的， 以及其中可能遇到的问题。</p></blockquote><h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ol><li><code>GitHub</code>（<a href="https://blog.csdn.net/ChinarCSDN/article/details/78726040">GitHub注册及使用</a>)</li><li><code>Git</code> (<a href="">Git详细安装步骤</a>)</li><li><code>Node.js</code> (<a href="https://blog.csdn.net/Small_Yogurt/article/details/104968169">Node.js详细安装步骤</a>)</li></ol><p>以上三个相信大家都有过接触，而且机器里有安装，如果没有的话，可以参考以上教程照着弄一下，由于比较简单，就不详细介绍了。</p><h2 id="步骤1：创建Git仓库"><a href="#步骤1：创建Git仓库" class="headerlink" title="步骤1：创建Git仓库"></a>步骤1：创建Git仓库</h2><p>需要注意仓库名称的格式为<code>Github账号用户名.github.io</code>, Github仓库实际上是存储博客静态页面，以及博客的空间，由于有Github的存在，我们的博客才可以在不需要服务器的支持下，进行访问。</p><p><img src="/.io//04/09/da-jian-bo-ke/blog_01.jpg" alt="创建Git仓库"></p>]]></content>
+    <content type="html"><![CDATA[<p>欢迎来到我的博客，本篇是博客的开篇，用来介绍该博客是如何搭建起来的。</p><blockquote><p>博客使用<a href="https://github.com/zzyong24/zzyong24.github.io">GitHub</a> + <a href="https://hexo.io/docs/">Hexo</a>进行搭建， 另外，使用到了<a href="https://github.com/blinkfox/hexo-theme-matery">hexo-theme-matery</a>部署主题。网页是一个纯静态页面，因此，不需要服务器就能够发布部署以及访问，相当方便。搭建网站大概花了半天的时间，有兴趣的同学也可以自己尝试进行部署哦！</p><p>接下来让我详细介绍网站是如何一步步搭建部署的， 以及其中可能遇到的问题。</p></blockquote><h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ol><li><code>GitHub</code>（<a href="https://blog.csdn.net/ChinarCSDN/article/details/78726040">GitHub注册及使用</a>)</li><li><code>Git</code> (<a href="">Git详细安装步骤</a>)</li><li><code>Node.js</code> (<a href="https://blog.csdn.net/Small_Yogurt/article/details/104968169">Node.js详细安装步骤</a>)</li></ol><p>以上三个相信大家都有过接触，而且机器里有安装，如果没有的话，可以参考以上教程照着弄一下，由于比较简单，就不详细介绍了。</p><h2 id="步骤1：创建Git仓库"><a href="#步骤1：创建Git仓库" class="headerlink" title="步骤1：创建Git仓库"></a>步骤1：创建Git仓库</h2><p>需要注意仓库名称的格式为<code>Github账号用户名.github.io</code>, Github仓库实际上是存储博客静态页面，以及博客的空间，由于有Github的存在，我们的博客才可以在不需要服务器的支持下，进行访问。</p><p><img src="/2022/04/09/build-blog/blog_01.jpg" alt="创建Git仓库"></p>]]></content>
     
     
       
