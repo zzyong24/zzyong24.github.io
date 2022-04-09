@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="开始：该博客网站是如何搭建起来的, 月明水清深">
-    <meta name="description" content="欢迎来到我的博客，本篇是博客的开篇，用来介绍该博客是如何搭建起来的。
+    <meta name="keywords" content="该博客网站是如何搭建起来的, 月明水清深">
+    <meta name="description" content="欢迎来到我的博客，本篇是博客的开篇，会介绍该博客是如何搭建起来的。
 
-博客使用GitHub + Hexo进行搭建， 另外，使用到了hexo-theme-matery部署主题。网页是一个纯静态页面，因此，不需要服务器就能够发布部署以及访问，">
+博客使用GitHub + Hexo进行搭建， 另外，使用到了hexo-theme-matery部署主题。网页是一个纯静态页面，因此，不需要服务器就能够发布部署以及访问，相">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,8 +30,8 @@
     </style>
 
 
-    <title>开始：该博客网站是如何搭建起来的 | 月明水清深</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>该博客网站是如何搭建起来的 | 月明水清深</title>
+    <link rel="icon" type="image/png" href="/../medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -56,7 +56,7 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    <img src="/./medias/logo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">月明水清深</span>
                 </a>
@@ -133,7 +133,7 @@
 
     <div class="mobile-head bg-color">
         
-        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        <img src="/./medias/logo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">月明水清深</div>
         <div class="logo-desc">
@@ -279,12 +279,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">开始：该博客网站是如何搭建起来的</h1>
+                    <h1 class="description center-align post-title">该博客网站是如何搭建起来的</h1>
                 </div>
             </div>
         </div>
@@ -447,7 +447,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.3k
                 </div>
                 
 
@@ -459,6 +459,11 @@
                 
 
                 
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
             </div>
         </div>
         <hr class="clearfix">
@@ -477,7 +482,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>欢迎来到我的博客，本篇是博客的开篇，用来介绍该博客是如何搭建起来的。</p>
+                <p>欢迎来到我的博客，本篇是博客的开篇，会介绍该博客是如何搭建起来的。</p>
 <blockquote>
 <p>博客使用<a target="_blank" rel="noopener" href="https://github.com/zzyong24/zzyong24.github.io">GitHub</a> + <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>进行搭建， 另外，使用到了<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">hexo-theme-matery</a>部署主题。网页是一个纯静态页面，因此，不需要服务器就能够发布部署以及访问，相当方便。搭建网站大概花了半天的时间，有兴趣的同学也可以自己尝试进行部署哦！</p>
 <p>接下来让我详细介绍网站是如何一步步搭建部署的， 以及其中可能遇到的问题。</p>
@@ -489,7 +494,7 @@
 </ol>
 <p>以上三个相信大家都有过接触，而且机器里有安装，如果没有的话，可以参考以上教程照着弄一下，由于比较简单，就不详细介绍了。</p>
 <h2 id="步骤1：创建Git仓库并配置Token"><a href="#步骤1：创建Git仓库并配置Token" class="headerlink" title="步骤1：创建Git仓库并配置Token"></a>步骤1：创建Git仓库并配置Token</h2><h3 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h3><p>需要注意仓库名称的格式为<code>Github账号用户名.github.io</code>, Github仓库实际上是存储博客静态页面，以及博客的空间，由于有Github的存在，我们的博客才可以在不需要服务器的支持下，进行访问。</p>
-<p><img src="/2022/04/09/build-blog/build-blog%5Cblog_01.png" alt="创建GitHub仓库"></p>
+<p><img src="/2022/04/09/build-blog/blog_01.png" alt="创建GitHub仓库"></p>
 <p>（<em>这里由于我已经创建过了， 所以显示已存在</em>）</p>
 <h3 id="配置Token"><a href="#配置Token" class="headerlink" title="配置Token"></a>配置Token</h3><p>由于GitHub更换了认证方式，因此大家在提交代码的时候，需要使用Token进行提交（<code>本质上hexo就是将GitHub作为远程仓库，存储网页和博客文档，因此也需要进行身份认证才能提交</code>）</p>
 <p>如何配置Token大家可以参考<a target="_blank" rel="noopener" href="https://docs.github.com/cn/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">Github官方文档</a></p>
@@ -497,7 +502,7 @@
 <h2 id="步骤2：安装Hexo-cli并初始化博客"><a href="#步骤2：安装Hexo-cli并初始化博客" class="headerlink" title="步骤2：安装Hexo-cli并初始化博客"></a>步骤2：安装Hexo-cli并初始化博客</h2><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>和创建新项目一样，需要在本地磁盘新建一个文件夹<code>Blog</code>（文件夹名称随意），鼠标右键打开<code>Git Bash Here</code>，输入<code>npm</code> 命令安装 <code>Hexo</code></p>
 <pre class="line-numbers language-node" data-language="node"><code class="language-node">npm install -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2022/04/09/build-blog/build-blog%5Cblog_02.jpg" alt="安装Hexo"></p>
+<p><img src="/2022/04/09/build-blog/blog_02.jpg" alt="安装Hexo"></p>
 <h3 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h3><ol>
 <li>使用命令<code>hexo init</code>进行初始化，是不是有点类似于git init</li>
 </ol>
@@ -536,6 +541,12 @@ hexo g       #生成网站静态文件到默认设置的 public 文件夹
 hexo d       #部署到设定的仓库(hexo deploy 的缩写)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>完成以后，打开浏览器，输入 <code>https://xxx.github.io</code>就可以打开你的网页了, 比如我的博客地址为<code>https://zzyong24.github.io/</code>，如果你的博客没有显示或刷新可以等一小会儿再刷新一下，它可能会有延迟的问题。到这一步为止，你已经成功部署了属于你自己的一个简单博客了，不过可能不太好看，支持的功能也不够多，接下来我们使用主题<code>hexo-theme-matery</code>来美化一下我们的博客。</p>
+<h2 id="步骤4：使用hexo-theme-matery美化博客"><a href="#步骤4：使用hexo-theme-matery美化博客" class="headerlink" title="步骤4：使用hexo-theme-matery美化博客"></a>步骤4：使用hexo-theme-matery美化博客</h2><p>由于<code>hexo-theme-matery</code>官方文档已经相当完备了，而且是纯中文的，大家可以点击链接进行浏览<a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery GitHub链接</a></p>
+<p>明天也会出一期自己在搭建过程中对<code>hexo-theme-matery</code>做的一些自定义配置，大家有需要可以参考哦！</p>
+<p>接下来分享一下自己忙活一天的成果吧！</p>
+<p><img src="/2022/04/09/build-blog/image-20220409234844006.png" alt="这是我配置的首页"></p>
+<p>我的博客链接：<a href="https://zzyong24.github.io/">https://zzyong24.github.io/</a></p>
+<h2 id="本系列其他文章超链"><a href="#本系列其他文章超链" class="headerlink" title="本系列其他文章超链"></a>本系列其他文章超链</h2><p><code>如何配置hexo-theme-matery主题</code>： 敬请期待！</p>
 
                 
             </div>
@@ -788,9 +799,9 @@ hexo d       #部署到设定的仓库(hexo deploy 的缩写)<span aria-hidden="
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="开始：该博客网站是如何搭建起来的">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="该博客网站是如何搭建起来的">
                         
-                        <span class="card-title">开始：该博客网站是如何搭建起来的</span>
+                        <span class="card-title">该博客网站是如何搭建起来的</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -846,9 +857,9 @@ hexo d       #部署到设定的仓库(hexo deploy 的缩写)<span aria-hidden="
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="开始：该博客网站是如何搭建起来的">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="该博客网站是如何搭建起来的">
                         
-                        <span class="card-title">开始：该博客网站是如何搭建起来的</span>
+                        <span class="card-title">该博客网站是如何搭建起来的</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1106,11 +1117,23 @@ hexo d       #部署到设定的仓库(hexo deploy 的缩写)<span aria-hidden="
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">1.2k</span>
+                        class="white-color">1.3k</span>
             
             
             
+                
             
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
             
             <br>
 
@@ -1173,7 +1196,7 @@ hexo d       #部署到设定的仓库(hexo deploy 的缩写)<span aria-hidden="
             <br>
             
         </div>
-        <div class="col s12 m4 l4 social-link ">
+        <div class="col s12 m4 l4 social-link social-statis">
     <a href="https://github.com/zzyong24" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -1367,6 +1390,8 @@ $(function () {
     
     <script src="/libs/others/clicklove.js" async="async"></script>
     
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
     
 
     
