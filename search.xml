@@ -4,7 +4,34 @@
   
     
     <entry>
-      <title>该博客网站是如何搭建起来的</title>
+      <title>博客搭建02-使用Hexo-theme-matery配置主题</title>
+      <link href="/2022/04/10/build-blog1/"/>
+      <url>/2022/04/10/build-blog1/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>接着上一篇，上一篇我们讲到如何基于<code>Github</code>以及<code>Hexo</code>搭建一个博客网站，接下来让我详细讲解主题<code>hexo-theme-matery</code>的使用，并搭建一个美观大方的博客网站吧！</p></blockquote><h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>在使用<code>hexo-theme-matery</code>之前，我们需要了解到<code>hexo</code>是支持自定义<code>theme</code>的，也就是说我们可以任意选择所有的<code>theme</code>而不仅仅是<code>matery</code>，所以有必要介绍一下市面上的一些主题，这里我贴一个链接，大家可以进去看看自己喜欢的主题，然后在选择需要哪一种吧！</p><p><a href="https://blog.csdn.net/zgd826237710/article/details/99671027">hexo开源主题</a></p><h2 id="访问hexo-theme-materyGitHub地址"><a href="#访问hexo-theme-materyGitHub地址" class="headerlink" title="访问hexo-theme-materyGitHub地址"></a>访问<code>hexo-theme-matery</code>GitHub地址</h2><p>由于<code>hexo-theme-matery</code>的官方文档相当完备，因此大家可以照着文档弄，基本都能弄出来，这里简单介绍一下我自己的一些配置。</p><p><a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery文档地址</a></p><h2 id="步骤1：下载"><a href="#步骤1：下载" class="headerlink" title="步骤1：下载"></a>步骤1：下载</h2><p>下载的话我们直接在昨天创建的<code>Blog</code>文件夹下的<code>themes</code>子文件夹使用<code>git clone</code>命令即可</p><pre class="line-numbers language-git" data-language="git"><code class="language-git">git clone https://github.com/blinkfox/hexo-theme-matery.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/2022/04/10/build-blog1/image-20220410102241164.png" alt="下载hexo-theme-matery"></p><h2 id="步骤2：配置"><a href="#步骤2：配置" class="headerlink" title="步骤2：配置"></a>步骤2：配置</h2><h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><p>下载完毕之后，我们需要将自己的<code>Hexo</code>主题配置成<code>hexo-theme-matery</code>，因此需要修改<code>Hexo</code>根目录下<code>_config.yml</code>的<code>theme</code>值为：<code>theme： hexo-theme-matery</code></p><p>这个文件其实就是修改<code>GitHub</code>仓库配置的那个文件</p><p><img src="/2022/04/10/build-blog1/image-20220410102624751.png" alt="配置主题"></p><p><img src="/2022/04/10/build-blog1/image-20220410102732542.png" alt="修改个人主页信息"></p><p>在配置主题的时候， 大家可以同时将<code>per_page</code>的配置以及<code>Site</code>模块的配置进行修改，<em>可以参考上图</em></p><h3 id="配置页面"><a href="#配置页面" class="headerlink" title="配置页面"></a>配置页面</h3><p>我们在配置完主题之后，还需要让博客更加丰满，所以需要配置一下分类页如<code>标签</code>、<code>分类</code>、<code>归档</code>、<code>关于</code>等</p><p><img src="/2022/04/10/build-blog1/image-20220410103125955.png" alt="配置分类页"></p><p>*** 需要提醒一下大家，<code>hexo</code>在根目录下有一个配置文件<code>_config.yml</code>，同样的，<code>hexo-theme-matery</code>在<code>hexo-theme-matery</code>主题的子目录下，也有一个<code>_config.yml</code>, 因此二者很容易混淆***</p><p><img src="/2022/04/10/build-blog1/image-20220410103631595.png" alt="hexo-theme-matery的配置文件"></p><p>为了将二者进行区分， 接下来我会使用</p><p><code>hexo 的 _config.yml</code> 以及 <code>hexo-theme-matery 的 _config.yml</code>分别称呼他们。。。</p><h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><p>通过以上的配置，主题大致已经部署完毕了，但是还有很多个性化设置以及便捷的配置没有做。</p><p>这里的话建议大家照着官方文档弄吧，因为在这里讲解的话可能也就是copy官方的文档了，还是再贴一下官方文档的地址，谢谢大家！</p><p><a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery文档</a></p><p>另外，<code>hexo</code>主题是有很多的，这里再贴一个别的主题`</p><p>个人博客的美观好看不是最重要的，关键还是文章的质量！</p><p>接下来会讲解一下怎么写文章，怎么配置文章的样式。</p><p>即<code>如何使用MarkDown</code>，以及<code>如何使用Hexo编辑文章</code>，</p><p>敬请期待！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客部署 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Blog </tag>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客搭建01-使用GitHub + Hexo搭建博客</title>
       <link href="/2022/04/09/build-blog/"/>
       <url>/2022/04/09/build-blog/</url>
       
@@ -13,9 +40,7 @@
       
       <categories>
           
-          <category> 博客 </category>
-          
-          <category> 部署 </category>
+          <category> 博客部署 </category>
           
       </categories>
       
