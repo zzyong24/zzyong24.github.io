@@ -4,11 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="个人博客搭建,hexo">
+    <meta name="keywords" content="工具 - squoosh图片压缩, 月明水清深">
     <meta name="description" content="
-接着上一篇，上一篇我们讲到如何基于Github以及Hexo搭建一个博客网站，接下来让我详细讲解主题hexo-theme-matery的使用，并搭建一个美观大方的博客网站吧！
-
-开篇在使用hexo-theme-matery之前，我们需要了解">
+在写博客的过程中，避免不了需要使用到图片，而一个高清的图片动辄好几M，相当之大，给博客网站的加载带来了很大的压力，因此在上传图片的时候，建议大家进行压缩了之后，再进行上传，本篇就来介绍一下Google免费图片压缩工具squoosh的使用
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -31,7 +30,7 @@
     </style>
 
 
-    <title>博客搭建02-使用Hexo-theme-matery配置主题 | 月明水清深</title>
+    <title>工具 - squoosh图片压缩 | 月明水清深</title>
     <link rel="icon" type="image/png" href="/../medias/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -324,12 +323,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">博客搭建02-使用Hexo-theme-matery配置主题</h1>
+                    <h1 class="description center-align post-title">工具 - squoosh图片压缩</h1>
                 </div>
             </div>
         </div>
@@ -445,12 +444,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Blog/">
-                                <span class="chip bg-color">Blog</span>
+                            <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">工具</span>
                             </a>
                         
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
+                            <a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
+                                <span class="chip bg-color">图片压缩</span>
                             </a>
                         
                     </div>
@@ -461,8 +460,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                博客部署
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -488,14 +487,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    706
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -524,35 +523,50 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>接着上一篇，上一篇我们讲到如何基于<code>Github</code>以及<code>Hexo</code>搭建一个博客网站，接下来让我详细讲解主题<code>hexo-theme-matery</code>的使用，并搭建一个美观大方的博客网站吧！</p>
+<p>在写博客的过程中，避免不了需要使用到图片，而一个高清的图片动辄好几<code>M</code>，相当之大，给博客网站的加载带来了很大的压力，因此在上传图片的时候，建议大家进行压缩了之后，再进行上传，本篇就来介绍一下<code>Google</code>免费图片压缩工具<code>squoosh</code>的使用</p>
+<p>部分转载：</p>
+<p>​    本文部分转自翰林苑<a target="_blank" rel="noopener" href="http://www.hanlindong.com/">http://www.hanlindong.com</a></p>
+<p>​    原作者：董翰林。</p>
 </blockquote>
-<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p>在使用<code>hexo-theme-matery</code>之前，我们需要了解到<code>hexo</code>是支持自定义<code>theme</code>的，也就是说我们可以任意选择所有的<code>theme</code>而不仅仅是<code>matery</code>，所以有必要介绍一下市面上的一些主题，这里我贴一个链接，大家可以进去看看自己喜欢的主题，然后在选择需要哪一种吧！</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zgd826237710/article/details/99671027">hexo开源主题</a></p>
-<h2 id="访问hexo-theme-materyGitHub地址"><a href="#访问hexo-theme-materyGitHub地址" class="headerlink" title="访问hexo-theme-materyGitHub地址"></a>访问<code>hexo-theme-matery</code>GitHub地址</h2><p>由于<code>hexo-theme-matery</code>的官方文档相当完备，因此大家可以照着文档弄，基本都能弄出来，这里简单介绍一下我自己的一些配置。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery文档地址</a></p>
-<h2 id="步骤1：下载"><a href="#步骤1：下载" class="headerlink" title="步骤1：下载"></a>步骤1：下载</h2><p>下载的话我们直接在昨天创建的<code>Blog</code>文件夹下的<code>themes</code>子文件夹使用<code>git clone</code>命令即可</p>
-<pre class="line-numbers language-git" data-language="git"><code class="language-git">git clone https://github.com/blinkfox/hexo-theme-matery.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>Squoosh</code>可以免费无限制地将图片压缩为多种格式，压缩效率很高，速度不算快，但是可以接受。更重要是，同时提供网页版和命令行版操作，前者可以实现即时可视化，而后者可以轻松地批量操作。</p>
+<h2 id="使用网页版"><a href="#使用网页版" class="headerlink" title="使用网页版"></a>使用网页版</h2><p><code>Squoosh</code>官方网站<a target="_blank" rel="noopener" href="https://squoosh.app/">https://squoosh.app/</a></p>
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410205842325.png" alt="网站主页"></p>
+<p>大家可以直接将图片拖拽进去进行压缩</p>
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210226909.png" alt="图片压缩">界面将图片使用一个可移动的分界线分成两个部分，可以用于对比压缩前后的两张图片，也可以对比两种不同压缩方式的图片。两张图片各有一个参数选择框，分别在左下角和右下角。在 Compress 一栏可以选择压缩的方式。左面默认为 “Original image”，即不进行压缩。右面默认为 <code>MozJPEG</code> ，是一种将图片压缩为 <code>JPEG</code> 格式的方法。选择了方法后，还可以选择对应的参数。比如对于 <code>JPEG</code> 压缩，可以选择它的质量，这里选择 75 ，可以看到，图片的尺寸从原来的 2.79 MB 下降到 862 kB ，下降了69%。而拖动分界框，可以发现，图片的质量降低很小，基本可以保持清晰。</p>
+<p>此外，在 <code>Edit</code> 菜单中，还提供了其它编辑选项。使用 <code>MozJPEG</code> 时，有重设图片大小 <code>Resize</code> 和减少颜色数量 <code>Reduce palette</code> 两个选项，可以进一步地压缩图片，读者可以自行探索。</p>
+<p>对生成的图片满意后，可以点击下面的 <code>下载</code> 按钮，将图片直接保存至本地。整个操作都是在浏览器中完成的，使用的是 <code>WebAssembly</code> 技术，非常方便使用，在各种操作系统中都可以使用，而且有浏览器就可以，不需要安装任何其它软件。</p>
+<h2 id="使用命令行版"><a href="#使用命令行版" class="headerlink" title="使用命令行版"></a>使用命令行版</h2><p>如果需要对大量图片进行批量压缩，可以使用 Squoosh 提供的命令行工具。目前它是基于 <code>Node.js</code> 的。如果你的电脑中安装了 <code>Node.js</code> ，可以很方便地使用。其语法为</p>
+<pre class="line-numbers language-none"><code class="language-none">$ npx @squoosh/cli [options] &lt;files...&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2022/04/10/build-blog1/image-20220410102241164.png" alt="下载hexo-theme-matery"></p>
-<h2 id="步骤2：配置"><a href="#步骤2：配置" class="headerlink" title="步骤2：配置"></a>步骤2：配置</h2><h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><p>下载完毕之后，我们需要将自己的<code>Hexo</code>主题配置成<code>hexo-theme-matery</code>，因此需要修改<code>Hexo</code>根目录下<code>_config.yml</code>的<code>theme</code>值为：<code>theme： hexo-theme-matery</code></p>
-<p>这个文件其实就是修改<code>GitHub</code>仓库配置的那个文件</p>
-<p><img src="/2022/04/10/build-blog1/image-20220410102624751.png" alt="配置主题"></p>
-<p><img src="/2022/04/10/build-blog1/image-20220410102732542.png" alt="修改个人主页信息"></p>
-<p>在配置主题的时候， 大家可以同时将<code>per_page</code>的配置以及<code>Site</code>模块的配置进行修改，<em>可以参考上图</em></p>
-<h3 id="配置页面"><a href="#配置页面" class="headerlink" title="配置页面"></a>配置页面</h3><p>我们在配置完主题之后，还需要让博客更加丰满，所以需要配置一下分类页如<code>标签</code>、<code>分类</code>、<code>归档</code>、<code>关于</code>等</p>
-<p><img src="/2022/04/10/build-blog1/image-20220410103125955.png" alt="配置分类页"></p>
-<p>*** 需要提醒一下大家，<code>hexo</code>在根目录下有一个配置文件<code>_config.yml</code>，同样的，<code>hexo-theme-matery</code>在<code>hexo-theme-matery</code>主题的子目录下，也有一个<code>_config.yml</code>, 因此二者很容易混淆***</p>
-<p><img src="/2022/04/10/build-blog1/image-20220410103631595.png" alt="hexo-theme-matery的配置文件"></p>
-<p>为了将二者进行区分， 接下来我会使用</p>
-<p><code>hexo 的 _config.yml</code> 以及 <code>hexo-theme-matery 的 _config.yml</code>分别称呼他们。。。</p>
-<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><p>通过以上的配置，主题大致已经部署完毕了，但是还有很多个性化设置以及便捷的配置没有做。</p>
-<p>这里的话建议大家照着官方文档弄吧，因为在这里讲解的话可能也就是copy官方的文档了，还是再贴一下官方文档的地址，谢谢大家！</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery文档</a></p>
-<p>另外，<code>hexo</code>主题是有很多的, 可以浏览一下这个博客，选择自己喜欢的<a target="_blank" rel="noopener" href="https://blog.csdn.net/zgd826237710/article/details/99671027">hexo开源主题</a></p>
-<p>个人博客的美观好看不是最重要的，关键还是文章的质量！</p>
-<p>接下来会讲解一下怎么写文章，怎么配置文章的样式。</p>
-<p>即<code>如何使用MarkDown</code>，以及<code>如何使用Hexo编辑文章</code>，</p>
-<p>敬请期待！</p>
+<blockquote>
+<p>​    如果发现卡住的情况多半是<code>squoosh</code>依赖下载不下来，可以配置<code>taobao</code>源</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210733170.png" alt="安装squoosh成功"></p>
+</blockquote>
+<p>代码非常简洁。对于新手来说，可以从浏览器中直接生成代码。在刚才的浏览器页面中，在右下角 <code>Edit</code> 对话框右侧有两个图标，其中第一个表示命令行的图标，点击后就可以生成命令行代码，并复制到剪贴板。</p>
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210420950.png" alt="生成代码"></p>
+<p>生成的代码为：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg <span class="token string">'{"quality":75,"baseline":false,"arithmetic":false,"progressive":true,"optimize_coding":true,"smoothing":0,"color_space":3,"quant_table":3,"trellis_multipass":false,"trellis_opt_zero":false,"trellis_opt_table":false,"trellis_loops":1,"auto_subsample":true,"chroma_subsample":2,"separate_chroma_quality":false,"chroma_quality":75}'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这里，已经把 <code>options</code> 所需要的所有内容都填写好了，和网页中的设置一样。下面，只需要在最后加入你的文件名，如</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg <span class="token string">'{"quality":75,"baseline":false,"arithmetic":false,"progressive":true,"optimize_coding":true,"smoothing":0,"color_space":3,"quant_table":3,"trellis_multipass":false,"trellis_opt_zero":false,"trellis_opt_table":false,"trellis_loops":1,"auto_subsample":true,"chroma_subsample":2,"separate_chroma_quality":false,"chroma_quality":75}'</span> file1.png file2.png file3.png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>就可以一次性压缩上面三个文件了。这个命令在 MacBook 中运行良好，但是在 Windows 中，由于 <code>cmd</code> 对引号的解析有问题，无法执行。但幸运的是，程序还提供了“自动”选项，是根据压缩后的图片品质来自动选取参数的，不需要自行指定参数。代码为</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg auto file1.png file2.png file3.png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这时，在 Windows 中也可以正常运行了。而且对于多个图片，是多线程并行运行的。运行结果为</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">3</span>/3 ✔ Squoosh results:
+ file3.png: <span class="token number">2</span>.38MB
+  └ file3.jpg → <span class="token number">641</span>.18KB <span class="token punctuation">(</span><span class="token number">26.3</span>%<span class="token punctuation">)</span>
+ file1.png: <span class="token number">2</span>.38MB
+  └ file1.jpg → <span class="token number">641</span>.18KB <span class="token punctuation">(</span><span class="token number">26.3</span>%<span class="token punctuation">)</span>
+ file2.png: <span class="token number">2</span>.38MB
+  └ file2.jpg → <span class="token number">641</span>.18KB <span class="token punctuation">(</span><span class="token number">26.3</span>%<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>体积压缩为原来的 26.3% 。</p>
+<p>对于文件比较多的情况，可以将文件保存在一个文件夹中，进入文件夹后，使用</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg auto <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -579,7 +593,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zzyong24.github.io/2022/04/10/build-blog1/">https://zzyong24.github.io/2022/04/10/build-blog1/</a>
+                    <a href="https://zzyong24.github.io/2022/04/10/tools-01-squoosh/">https://zzyong24.github.io/2022/04/10/tools-01-squoosh/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -617,12 +631,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Blog/">
-                                    <span class="chip bg-color">Blog</span>
+                                <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">工具</span>
                                 </a>
                             
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
+                                <a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
+                                    <span class="chip bg-color">图片压缩</span>
                                 </a>
                             
                         </div>
@@ -796,17 +810,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/04/10/blog-build02/">
+                <a href="/2022/04/10/tools-01-squoosh/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="博客搭建03-如何写博客">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="工具 - squoosh图片压缩">
                         
-                        <span class="card-title">博客搭建03-如何写博客</span>
+                        <span class="card-title">工具 - squoosh图片压缩</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -816,30 +831,31 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                    博客部署
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Blog/">
-                        <span class="chip bg-color">Blog</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
                     </a>
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
+                        <span class="chip bg-color">图片压缩</span>
                     </a>
                     
                 </div>
@@ -853,13 +869,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/09/build-blog/">
+                <a href="/2022/04/10/git-01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="博客搭建01-使用GitHub + Hexo搭建博客">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Git01-Git密钥及仓库管理">
                         
-                        <span class="card-title">博客搭建01-使用GitHub + Hexo搭建博客</span>
+                        <span class="card-title">Git01-Git密钥及仓库管理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -870,14 +886,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                    博客部署
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
                                 </a>
                             
                             
@@ -887,12 +903,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Blog/">
-                        <span class="chip bg-color">Blog</span>
-                    </a>
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
