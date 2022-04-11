@@ -43,9 +43,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.1.0"><link rel="alternate" href="/atom.xml" title="月明水清深" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 6.1.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="月明水清深" type="application/atom+xml">
 </head>
 
 
@@ -480,7 +480,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-10
+                    2022-04-11
                 </div>
                 
 
@@ -525,43 +525,43 @@
                 <blockquote>
 <p>在写博客的过程中，避免不了需要使用到图片，而一个高清的图片动辄好几<code>M</code>，相当之大，给博客网站的加载带来了很大的压力，因此在上传图片的时候，建议大家进行压缩了之后，再进行上传，本篇就来介绍一下<code>Google</code>免费图片压缩工具<code>squoosh</code>的使用</p>
 <p>部分转载：</p>
-<p>​    本文部分转自翰林苑<a target="_blank" rel="noopener" href="http://www.hanlindong.com/">http://www.hanlindong.com</a></p>
-<p>​    原作者：董翰林。</p>
+<p>​	本文部分转自翰林苑<a target="_blank" rel="noopener" href="http://www.hanlindong.com/">http://www.hanlindong.com</a></p>
+<p>​	原作者：董翰林。</p>
 </blockquote>
 <p><code>Squoosh</code>可以免费无限制地将图片压缩为多种格式，压缩效率很高，速度不算快，但是可以接受。更重要是，同时提供网页版和命令行版操作，前者可以实现即时可视化，而后者可以轻松地批量操作。</p>
 <h2 id="使用网页版"><a href="#使用网页版" class="headerlink" title="使用网页版"></a>使用网页版</h2><p><code>Squoosh</code>官方网站<a target="_blank" rel="noopener" href="https://squoosh.app/">https://squoosh.app/</a></p>
-<p><img src="/2022/04/10/tools-01-squoosh/image-20220410205842325.png" alt="网站主页"></p>
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410205842325.jpg" alt="网站主页"></p>
 <p>大家可以直接将图片拖拽进去进行压缩</p>
-<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210226909.png" alt="图片压缩">界面将图片使用一个可移动的分界线分成两个部分，可以用于对比压缩前后的两张图片，也可以对比两种不同压缩方式的图片。两张图片各有一个参数选择框，分别在左下角和右下角。在 Compress 一栏可以选择压缩的方式。左面默认为 “Original image”，即不进行压缩。右面默认为 <code>MozJPEG</code> ，是一种将图片压缩为 <code>JPEG</code> 格式的方法。选择了方法后，还可以选择对应的参数。比如对于 <code>JPEG</code> 压缩，可以选择它的质量，这里选择 75 ，可以看到，图片的尺寸从原来的 2.79 MB 下降到 862 kB ，下降了69%。而拖动分界框，可以发现，图片的质量降低很小，基本可以保持清晰。</p>
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210226909.jpg" alt="图片压缩">界面将图片使用一个可移动的分界线分成两个部分，可以用于对比压缩前后的两张图片，也可以对比两种不同压缩方式的图片。两张图片各有一个参数选择框，分别在左下角和右下角。在 Compress 一栏可以选择压缩的方式。左面默认为 “Original image”，即不进行压缩。右面默认为 <code>MozJPEG</code> ，是一种将图片压缩为 <code>JPEG</code> 格式的方法。选择了方法后，还可以选择对应的参数。比如对于 <code>JPEG</code> 压缩，可以选择它的质量，这里选择 75 ，可以看到，图片的尺寸从原来的 2.79 MB 下降到 862 kB ，下降了69%。而拖动分界框，可以发现，图片的质量降低很小，基本可以保持清晰。</p>
 <p>此外，在 <code>Edit</code> 菜单中，还提供了其它编辑选项。使用 <code>MozJPEG</code> 时，有重设图片大小 <code>Resize</code> 和减少颜色数量 <code>Reduce palette</code> 两个选项，可以进一步地压缩图片，读者可以自行探索。</p>
 <p>对生成的图片满意后，可以点击下面的 <code>下载</code> 按钮，将图片直接保存至本地。整个操作都是在浏览器中完成的，使用的是 <code>WebAssembly</code> 技术，非常方便使用，在各种操作系统中都可以使用，而且有浏览器就可以，不需要安装任何其它软件。</p>
 <h2 id="使用命令行版"><a href="#使用命令行版" class="headerlink" title="使用命令行版"></a>使用命令行版</h2><p>如果需要对大量图片进行批量压缩，可以使用 Squoosh 提供的命令行工具。目前它是基于 <code>Node.js</code> 的。如果你的电脑中安装了 <code>Node.js</code> ，可以很方便地使用。其语法为</p>
 <pre class="line-numbers language-none"><code class="language-none">$ npx @squoosh/cli [options] &lt;files...&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <blockquote>
-<p>​    如果发现卡住的情况多半是<code>squoosh</code>依赖下载不下来，可以配置<code>taobao</code>源</p>
+<p>​	如果发现卡住的情况多半是<code>squoosh</code>依赖下载不下来，可以配置<code>taobao</code>源</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> registry https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210733170.png" alt="安装squoosh成功"></p>
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210733170.jpg" alt="安装squoosh成功"></p>
 </blockquote>
 <p>代码非常简洁。对于新手来说，可以从浏览器中直接生成代码。在刚才的浏览器页面中，在右下角 <code>Edit</code> 对话框右侧有两个图标，其中第一个表示命令行的图标，点击后就可以生成命令行代码，并复制到剪贴板。</p>
-<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210420950.png" alt="生成代码"></p>
+<p><img src="/2022/04/10/tools-01-squoosh/image-20220410210420950.jpg" alt="生成代码"></p>
 <p>生成的代码为：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg <span class="token string">'{"quality":75,"baseline":false,"arithmetic":false,"progressive":true,"optimize_coding":true,"smoothing":0,"color_space":3,"quant_table":3,"trellis_multipass":false,"trellis_opt_zero":false,"trellis_opt_table":false,"trellis_loops":1,"auto_subsample":true,"chroma_subsample":2,"separate_chroma_quality":false,"chroma_quality":75}'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这里，已经把 <code>options</code> 所需要的所有内容都填写好了，和网页中的设置一样。下面，只需要在最后加入你的文件名，如</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg <span class="token string">'{"quality":75,"baseline":false,"arithmetic":false,"progressive":true,"optimize_coding":true,"smoothing":0,"color_space":3,"quant_table":3,"trellis_multipass":false,"trellis_opt_zero":false,"trellis_opt_table":false,"trellis_loops":1,"auto_subsample":true,"chroma_subsample":2,"separate_chroma_quality":false,"chroma_quality":75}'</span> file1.png file2.png file3.png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg <span class="token string">'{"quality":75,"baseline":false,"arithmetic":false,"progressive":true,"optimize_coding":true,"smoothing":0,"color_space":3,"quant_table":3,"trellis_multipass":false,"trellis_opt_zero":false,"trellis_opt_table":false,"trellis_loops":1,"auto_subsample":true,"chroma_subsample":2,"separate_chroma_quality":false,"chroma_quality":75}'</span> file1.jpg file2.jpg file3.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>就可以一次性压缩上面三个文件了。这个命令在 MacBook 中运行良好，但是在 Windows 中，由于 <code>cmd</code> 对引号的解析有问题，无法执行。但幸运的是，程序还提供了“自动”选项，是根据压缩后的图片品质来自动选取参数的，不需要自行指定参数。代码为</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg auto file1.png file2.png file3.png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">npx @squoosh/cli --mozjpeg auto file1.jpg file2.jpg file3.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>这时，在 Windows 中也可以正常运行了。而且对于多个图片，是多线程并行运行的。运行结果为</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">3</span>/3 ✔ Squoosh results:
- file3.png: <span class="token number">2</span>.38MB
+ file3.jpg: <span class="token number">2</span>.38MB
   └ file3.jpg → <span class="token number">641</span>.18KB <span class="token punctuation">(</span><span class="token number">26.3</span>%<span class="token punctuation">)</span>
- file1.png: <span class="token number">2</span>.38MB
+ file1.jpg: <span class="token number">2</span>.38MB
   └ file1.jpg → <span class="token number">641</span>.18KB <span class="token punctuation">(</span><span class="token number">26.3</span>%<span class="token punctuation">)</span>
- file2.png: <span class="token number">2</span>.38MB
+ file2.jpg: <span class="token number">2</span>.38MB
   └ file2.jpg → <span class="token number">641</span>.18KB <span class="token punctuation">(</span><span class="token number">26.3</span>%<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>体积压缩为原来的 26.3% 。</p>
@@ -810,18 +810,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/10/tools-01-squoosh/">
+                <a href="/2022/04/11/sublime-01/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="工具 - squoosh图片压缩">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="sublime右键菜单消失">
                         
-                        <span class="card-title">工具 - squoosh图片压缩</span>
+                        <span class="card-title">sublime右键菜单消失</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -831,9 +830,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -846,16 +845,15 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
+                    <a href="/tags/sublime/">
+                        <span class="chip bg-color">sublime</span>
                     </a>
                     
-                    <a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
-                        <span class="chip bg-color">图片压缩</span>
+                    <a href="/tags/%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">
+                        <span class="chip bg-color">右键菜单</span>
                     </a>
                     
                 </div>
@@ -1079,7 +1077,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.5k</span>
+                        class="white-color">5.7k</span>
             
             
             
