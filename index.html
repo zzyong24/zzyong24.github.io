@@ -121,17 +121,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
@@ -216,17 +205,6 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
 		</a>
           
         </li>
@@ -606,13 +584,13 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/04/11/sublime-01/">
+                    <a href="/2022/04/19/web-huo-qu-yong-hu-zhen-shi-ip/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="sublime右键菜单消失">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="web获取用户真实IP">
                             
-                            <span class="card-title">sublime右键菜单消失</span>
+                            <span class="card-title">web获取用户真实IP</span>
                         </div>
                     </a>
 
@@ -620,24 +598,22 @@
                         <div class="summary block-with-text">
                             
                                 
-记一次sublime右键菜单消失，
-转载自：解决安装完sublime txt，鼠标右键，没有使用sublime txt打开问题
+​	记录一个获取当前用户的IP地址， 需要通过HttpServletRequest
 
-1.打开cmd窗口，输入regedit，打开注册表
-
-2.依次打开下面文件夹计算机\HKEY_CLASSES
+public void getIp(HttpServletRequest request) {
+        String ip = request.
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-19
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                                <a href="/categories/javaweb/" class="post-category">
+                                    javaweb
                                 </a>
                                 
                                 
@@ -648,12 +624,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/sublime/">
-                            <span class="chip bg-color">sublime</span>
+                        <a href="/tags/javaweb/">
+                            <span class="chip bg-color">javaweb</span>
                         </a>
                         
-                        <a href="/tags/%E5%8F%B3%E9%94%AE%E8%8F%9C%E5%8D%95/">
-                            <span class="chip bg-color">右键菜单</span>
+                        <a href="/tags/code/">
+                            <span class="chip bg-color">code</span>
                         </a>
                         
                     </div>
@@ -665,13 +641,13 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/04/10/tools-01-squoosh/">
+                    <a href="/2022/04/19/qian-duan-xiao-yan-jin-e-zheng-ze/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="工具 - squoosh图片压缩">
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="前端效验金额 - 正则">
                             
-                            <span class="card-title">工具 - squoosh图片压缩</span>
+                            <span class="card-title">前端效验金额 - 正则</span>
                         </div>
                     </a>
 
@@ -679,20 +655,21 @@
                         <div class="summary block-with-text">
                             
                                 
-在写博客的过程中，避免不了需要使用到图片，而一个高清的图片动辄好几M，相当之大，给博客网站的加载带来了很大的压力，因此在上传图片的时候，建议大家进行压缩了之后，再进行上传，本篇就来介绍一下Google免费图片压缩工具squoosh的使用
+​	记录一条效验交易金额的正则
 
+var amountReg = /(^[1-9](\d+)?(\.\d{1,2})?$)|(^[1-9]$)|(^\d\.[1-9]{1,2}$)|(^\d\.[0]{1}[1-9]{1}$|(^\d\.
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-19
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                                <a href="/categories/%E6%AD%A3%E5%88%99/" class="post-category">
+                                    正则
                                 </a>
                                 
                                 
@@ -703,12 +680,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                            <span class="chip bg-color">工具</span>
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                            <span class="chip bg-color">前端</span>
                         </a>
                         
-                        <a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
-                            <span class="chip bg-color">图片压缩</span>
+                        <a href="/tags/%E6%AD%A3%E5%88%99/">
+                            <span class="chip bg-color">正则</span>
                         </a>
                         
                     </div>
@@ -720,13 +697,13 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/04/10/git-01/">
+                    <a href="/2022/04/19/qu-diao-vue-warn/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Git01-Git密钥及仓库管理">
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="去掉Vue warn">
                             
-                            <span class="card-title">Git01-Git密钥及仓库管理</span>
+                            <span class="card-title">去掉Vue warn</span>
                         </div>
                     </a>
 
@@ -734,22 +711,414 @@
                         <div class="summary block-with-text">
                             
                                 
-本篇文章用来记录一下自己在使用Git中容易遗忘的一些命令及配置
+记录一下如何去掉非报错的 vue warn信息
 
-查看及修改Git配置
-查看config配置
-git config --list
-
+在main.js 文件中 添加
+Vue.config.silent = true
 
 
-更改全局用户名 / 邮箱
-# 更改全局用户名
-git config --global 
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-19
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/vue/" class="post-category">
+                                    vue
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/vue/">
+                            <span class="chip bg-color">vue</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                            <span class="chip bg-color">前端</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/04/15/css-shi-xian-ju-zhong-de-ji-chong-fang-an/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="css实现居中的几种方案">
+                            
+                            <span class="card-title">css实现居中的几种方案</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+​	转自
+css实现居中的几种方案
+
+css的居中，可以分为水平居中和垂直居中，实现居中的方式有以下几种：1.text-align:center 块状元素，水平居中(只适用于块级元素,块级元素内的行内元素可以居中或者将此行内元素设置为块级
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-15
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/css/" class="post-category">
+                                    css
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/css/">
+                            <span class="chip bg-color">css</span>
+                        </a>
+                        
+                        <a href="/tags/fromt/">
+                            <span class="chip bg-color">fromt</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/04/15/vue-yin-ru-tu-pian/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="vue动态引入图片">
+                            
+                            <span class="card-title">vue动态引入图片</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+​	记录一下vue 在动态引入图片时踩的坑
+
+场景如下：
+​	vue + element ui， 在使用el-carousel走马灯组件时， 想要绑定动态图片， 试了很多方案， 都不行
+贴一个解决方案
+&lt;el-carousel tr
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-15
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/vue/" class="post-category">
+                                    vue
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/front/">
+                            <span class="chip bg-color">front</span>
+                        </a>
+                        
+                        <a href="/tags/vue/">
+                            <span class="chip bg-color">vue</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/04/14/spring-transaction-01/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Spring事务失效">
+                            
+                            <span class="card-title">Spring事务失效</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+​	在工作开发中，遇到了一类奇怪的Bug， 
+bug1： 我在类中， 调用了本类的事务方法， 导致Transaction synchronization is not active
+事务并没有生效
+
+原因发生的原因即是再同一个类中， 方法
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E4%BA%8B%E5%8A%A1/" class="post-category">
+                                    事务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Spring/">
+                            <span class="chip bg-color">Spring</span>
+                        </a>
+                        
+                        <a href="/tags/%E4%BA%8B%E5%8A%A1/">
+                            <span class="chip bg-color">事务</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/04/14/dababase-oracle-linelock01/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Oracle更新超时 - 行锁">
+                            
+                            <span class="card-title">Oracle更新超时 - 行锁</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+​	记录一次更新数据库一直超时。
+本质原因是因为事务未关闭， 导致行锁。。。
+
+查看当前数据库存在行锁的用户、SQL等SELECT s.sid, s.serial#, s.username, s.schemaname, s.osuser,
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/database/" class="post-category">
+                                    database
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/oracle/">
+                            <span class="chip bg-color">oracle</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/04/13/build-blog4/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="hexo new 自动打开typora">
+                            
+                            <span class="card-title">hexo new 自动打开typora</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+​	为了方便hexo的使用， 希望在使用hexo new命令之后， 立即打开typora软件，并显示刚创建的文档， 开始愉快的编辑！
+本文参考：Hexo博客新建文章后自动打开编辑器 
+
+在hexo根目录中， 创建scripts文件夹(如果
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
+                                    博客部署
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Blog/">
+                            <span class="chip bg-color">Blog</span>
+                        </a>
+                        
+                        <a href="/tags/Hexo/">
+                            <span class="chip bg-color">Hexo</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/04/13/typora-01/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="typora vue主题">
+                            
+                            <span class="card-title">typora vue主题</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+​	转自
+Vue 文档风格的 Typora 主题
+
+
+typora-vue-theme 是 Typora Markdown 文档编辑器中一款类似Vue文档风格的主题。
+
+简介Typora是一款支持实时预览的 Markdown 编辑器和阅读
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/typora/" class="post-category">
+                                    typora
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/typora/">
+                            <span class="chip bg-color">typora</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/04/13/git-02/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="git refusing to merge unrelated histories错误">
+                            
+                            <span class="card-title">git refusing to merge unrelated histories错误</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+​	转自
+git 出现 fatal: refusing to merge unrelated histories 错误
+
+背景git pull失败，提示： fatal: refusing to merge unrelated histor
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-13
                             </span>
                             <span class="publish-author">
                                 
@@ -780,13 +1149,13 @@ git config --global
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/04/10/blog-build02/">
+                    <a href="/2022/04/12/windwos-bat-01/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="博客搭建03-如何写博客">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="windwos bat编程">
                             
-                            <span class="card-title">博客搭建03-如何写博客</span>
+                            <span class="card-title">windwos bat编程</span>
                         </div>
                     </a>
 
@@ -794,22 +1163,24 @@ git config --global
                         <div class="summary block-with-text">
                             
                                 
-本篇主要用来讲解如何写博客，包括如何使用hexo命令，如何解决图片显示问题，如何设置博客属性，如何使用MakrDown，让我们开始吧！
+​	在开发squ.bat批量压缩图片脚本的时候，属实被bat折磨到了。。。
+查阅了无数的资料，这里简单记载一下吧！
 
-新建博客解决图片显示问题1. 
-   在新建博客之前，大家需要打开Hexo根目录下_config.y
+参数传递普通传参bat支持%0 ~ %9总计十个参数，其中：
+%0 ：该bat文件名
+%1 ~ %9 ：第1到第9个入参
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-12
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                    博客部署
+                                <a href="/categories/windwos%E6%89%B9%E5%A4%84%E7%90%86/" class="post-category">
+                                    windwos批处理
                                 </a>
                                 
                                 
@@ -820,12 +1191,8 @@ git config --global
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Blog/">
-                            <span class="chip bg-color">Blog</span>
-                        </a>
-                        
-                        <a href="/tags/Hexo/">
-                            <span class="chip bg-color">Hexo</span>
+                        <a href="/tags/bat/">
+                            <span class="chip bg-color">bat</span>
                         </a>
                         
                     </div>
@@ -837,13 +1204,13 @@ git config --global
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/04/10/build-blog1/">
+                    <a href="/2022/04/12/tools-01-squoosh-02/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="博客搭建02-使用Hexo-theme-matery配置主题">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="批量图片压缩bat - 基于squoosh">
                             
-                            <span class="card-title">博客搭建02-使用Hexo-theme-matery配置主题</span>
+                            <span class="card-title">批量图片压缩bat - 基于squoosh</span>
                         </div>
                     </a>
 
@@ -851,21 +1218,20 @@ git config --global
                         <div class="summary block-with-text">
                             
                                 
-接着上一篇，上一篇我们讲到如何基于Github以及Hexo搭建一个博客网站，接下来让我详细讲解主题hexo-theme-matery的使用，并搭建一个美观大方的博客网站吧！
-
-开篇在使用hexo-theme-matery之前，我们需要了解
+​	上篇我们介绍到了谷歌图片压缩神器squoosh的网页版以及cli命令行版， 相信大家已经深深喜欢上了这款小巧轻便的工具，本篇接上篇， 为了方便squoosh-cli的使用，解决其无法区分不同格式的图片从何选择不同的压缩模式的问题。
+​
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-12
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                    博客部署
+                                <a href="/categories/windwos%E6%89%B9%E5%A4%84%E7%90%86/" class="post-category">
+                                    windwos批处理
                                 </a>
                                 
                                 
@@ -876,67 +1242,16 @@ git config --global
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Blog/">
-                            <span class="chip bg-color">Blog</span>
+                        <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                            <span class="chip bg-color">工具</span>
                         </a>
                         
-                        <a href="/tags/Hexo/">
-                            <span class="chip bg-color">Hexo</span>
+                        <a href="/tags/%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/">
+                            <span class="chip bg-color">图片压缩</span>
                         </a>
                         
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2022/04/09/build-blog/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="博客搭建01-使用GitHub + Hexo搭建博客">
-                            
-                            <span class="card-title">博客搭建01-使用GitHub + Hexo搭建博客</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                欢迎来到我的博客，本篇是博客的开篇，会介绍该博客是如何搭建起来的。
-
-博客使用GitHub + Hexo进行搭建， 另外，使用到了hexo-theme-matery部署主题。网页是一个纯静态页面，因此，不需要服务器就能够发布部署以及访问，相
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-09
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/" class="post-category">
-                                    博客部署
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Blog/">
-                            <span class="chip bg-color">Blog</span>
-                        </a>
-                        
-                        <a href="/tags/Hexo/">
-                            <span class="chip bg-color">Hexo</span>
+                        <a href="/tags/bat/">
+                            <span class="chip bg-color">bat</span>
                         </a>
                         
                     </div>
@@ -949,6 +1264,30 @@ git config --global
     </article>
 
 </main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
 
@@ -970,7 +1309,7 @@ git config --global
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.7k</span>
+                        class="white-color">10.7k</span>
             
             
             
