@@ -1,0 +1,1479 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="dns 解析较慢, 月明水清深">
+    <meta name="description" content="
+​	转自：
+踩了个 DNS 解析的坑，但我还是没想通
+
+最近踩了个 DNS 解析的小坑，虽然问题解决了，但排查过程比较曲折，最后还是有一点没有想通，整个过程分享给大家。
+背景最近负责的服务要置换机器。置换机器可能很多小伙伴不知道是干啥，因">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
+
+    <title>dns 解析较慢 | 月明水清深</title>
+    <link rel="icon" type="image/png" href="/../medias/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="月明水清深" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/./medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">月明水清深</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/./medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">月明水清深</div>
+        <div class="logo-desc">
+            
+            添砖嘎娃
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/zzyong24/zzyong24.github.io.git" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/zzyong24/zzyong24.github.io.git" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">dns 解析较慢</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">网络</span>
+                            </a>
+                        
+                            <a href="/tags/DNS/">
+                                <span class="chip bg-color">DNS</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
+                                网络
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-04-22
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-05-24
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>​	转自：</p>
+<p><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/15911ac886165b658846827b7">踩了个 DNS 解析的坑，但我还是没想通</a></p>
+</blockquote>
+<p>最近踩了个 DNS 解析的小坑，虽然问题解决了，但排查过程比较曲折，最后还是有一点没有想通，整个过程分享给大家。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>最近负责的服务要置换机器。置换机器可能很多小伙伴不知道是干啥，因为大家平时接触不到，我简单解释一下什么是机器置换以及为什么需要机器置换。</p>
+<p>机器置换通俗地讲就是更换机器，把服务从一台机器迁移到另一台上去。</p>
+<p>为什么要机器置换呢？ 表面原因可能是机器硬件故障、或者机器过了保修期。</p>
+<p>有些小伙伴可能就想问，我在公司也负责了很多服务，为啥从来没有置换过机器呢？原因可能是用了容器，没有直接部署在物理机上，置换机器的任务被转移给了云平台的运维人员；还可能是你们有专门的运维帮忙做了这件事，对开发人员来说几乎是透明的。</p>
+<p>我负责的服务为啥要置换呢？因为机器过保了。服务为啥部署在物理机上呢？因为它是个基础服务，和一般服务不太一样，有一些限制，只能在物理机上部署。为啥没有运维人员帮忙呢？因为公司很多基础服务是自运维，开发者既做开发又是运维。</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/2905deda5f38fc780cf5118046c40f88.jpeg" alt="img"></p>
+<p>说完机器置换，再来聊聊这个基础服务，它是一个 Go 写的服务，不停地发送 HTTP 请求，记住这点就好，其他不重要。</p>
+<p>这个服务在置换机器后，<strong>HTTP 请求的耗时慢了不少</strong>，如下图，黄色为老机器，蓝色为新机器，指标的值就是 HTTP 请求的耗时（毫秒），大概 1.5 倍的差距。这就是今天要分享的问题，接下来说说我的排查过程。</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/a2a1586d8ebfca0acc59ef6590198ab1.png" alt="img"></p>
+<h3 id="问题排查"><a href="#问题排查" class="headerlink" title="问题排查"></a>问题排查</h3><p>这种情况，先去看了机器的各项指标，如 CPU、网络情况等等，看看是否有异常，确认是否被其他指标影响了。但看了一圈下来，发现新机器的各项指标甚至还优于老机器。</p>
+<p>接着去询问了提供机器的同学，看看机器是否有异常，结果也是没有。</p>
+<p>既然 HTTP 请求变慢，就想到看看是请求的哪个环节变慢了，用如下的命令来测试下，域名我用百度的域名来代替：</p>
+<blockquote>
+<p>curl  -o /dev/null -s -w %{time_namelookup}::%{time_connect}::%{time_total}”\n” <a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a></p>
+</blockquote>
+<p>这里的各个参数代表含义（还有一些其他参数也可用）：</p>
+<ul>
+<li>time_total 总时间，按秒计。精确到小数点后三位。</li>
+<li>time_namelookup DNS 解析时间,从请求开始到 DNS 解析完毕所用时间。</li>
+<li>time_connect 连接时间,从开始到建立 TCP 连接完成所用时间,包括前边 DNS 解析时间，如果需要单纯的得到连接时间，用这个 time_connect 时间减去前边 time_namelookup 时间。以下同理，不再赘述。</li>
+<li>time_appconnect 连接建立完成时间，如 SSL/SSH 等建立连接或者完成三次握手时间。</li>
+<li>time_pretransfer 从开始到准备传输的时间。</li>
+<li>time_redirect 重定向时间，包括到最后一次传输前的几次重定向的 DNS 解析，连接，预传输，传输时间。</li>
+<li>time_starttransfer 开始传输时间。在 client 发出请求之后，Web 服务器返回数据的第一个字节所用的时间</li>
+</ul>
+<p>这样能看到域名解析、连接、传输各个阶段的耗时情况，新老机器对比，如果有一项特别高，那么这项肯定有问题</p>
+<ul>
+<li>新机器：0.001484::0.001743::0.007489</li>
+<li>老机器：0.000681::0.000912::0.002475</li>
+</ul>
+<p>简单计算一下：</p>
+<ul>
+<li>新机器：DNS 解析耗时 0.001484 秒，连接建立耗时 0.000258 秒，总耗时 0.007489 秒</li>
+<li>老机器：DNS 解析耗时 0.000681 秒，连接建立耗时 0.000231 秒，总耗时 0.002475 秒</li>
+</ul>
+<p>虽然从这次的测试数据来看，新机器 DNS 解析似乎慢了一点，但你仔细看这个数值，几乎对请求的总体耗时没啥影响，而且多测试几次，发现这两台机器的 DNS 解析其实差不多。</p>
+<p>但还是不放心，验证 DNS 是否存在问题，再用 dig 命令去试一下</p>
+<blockquote>
+<p>dig <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></p>
+</blockquote>
+<p>执行时，明显感觉到了卡顿，确定是 DNS 有问题了。</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/0058e7c61b383d5631c517a84aadded4.jpeg" alt="img"></p>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>一开始，我去网上搜索了一下 DNS 慢的相关文章，找到了一篇文章《记一次 Go net 库 DNS 问题排查》，但稍微验证了下，和我的 case 没啥关系，文章是好文章，所以也贴个链接，感兴趣可以读读。</p>
+<blockquote>
+<p>《记一次 Go net 库 DNS 问题排查》<a target="_blank" rel="noopener" href="https://juejin.cn/post/6948469896007122974">https://juejin.cn/post/6948469896007122974</a></p>
+</blockquote>
+<p>接着就去找了网络组的同学，网络组的同学稍微看了一眼就知道原因了，说新机器没有安装 DNSmasq，这又是个啥？不要慌，先去网上查下再接话。</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/11161179bcfeedf9194f0171040b67e3.jpeg" alt="img"></p>
+<blockquote>
+<p>DNSmasq 提供 DNS 缓存和 DHCP 服务功能。作为域名解析服务器(DNS)，DNSmasq 可以通过缓存 DNS 请求来提高对访问过的网址的连接速度。作为 DHCP 服务器，DNSmasq 可以用于为局域网电脑分配内网 ip 地址和提供路由。DNS 和 DHCP 两个功能可以同时或分别单独实现。DNSmasq 轻量且易配置，适用于个人用户或少于 50 台主机的网络。此外它还自带了一个 PXE 服务器。</p>
+</blockquote>
+<p>简单来说，这里它扮演的是一个 DNS 缓存的角色，提高 DNS 的查询速度。</p>
+<p>说到这里，插播一个小知识，我一直以为 DNS 会被操作系统缓存，不知道你们有没有这样的错觉，但实际上，Linux 下如果没有特殊处理，每一次 DNS 解析都要查询 DNS 服务器。很好证明，可以用 tcpdump 抓 DNS 的包试试，我当时也试了下，每次都会去远程拿 DNS 解析结果。这个结论在《TCP/IP 详解卷 1》中也能找到相关的描述：</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/b8b8b3d61f20ac748fda103e4bc446a7.png" alt="img"></p>
+<p>只有 Windows 和比较新的 Linux 系统可以在客户端缓存 DNS，而且 Linux 系统是需要手动开启的，所以默认情况下都要去远程获取 DNS 缓存。</p>
+<p>言归正传，网络组同学说要么装一个 DNSmasq，要么改下 DNS 服务器的配置，也就是<code>/etc/resolv.conf</code>文件，由于机器上已经有服务了，所以选择了改配置这种比较安全的方式。</p>
+<p>没改之前，/etc/resolv.conf 的第一行是 127.0.0.1，也就是将本地也作为 DNS 服务器，但实际上本地没有开启 DNS 服务，网络组同学说，去掉第一行配置或者安装 DNSmasq 都可以。</p>
+<p>先是去掉了 127.0.0.1 的配置，结果耗时不变！</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/5bf8f2b1716d1c76cb4f9a9ed65f35ba.jpeg" alt="img"></p>
+<p>随后加上 127.0.0.1 的配置，又安装了 DNSmasq 后，耗时就降下去了。</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/abbe3f789442aeaa013cbe73ce8108c9.jpeg" alt="img"></p>
+<p>整个解决的过程，程序没有重启，唯一的变量是安装了 DNSmasq，所以这一定是 DNS 的锅了。</p>
+<h3 id="问题反思"><a href="#问题反思" class="headerlink" title="问题反思"></a>问题反思</h3><p>虽然问题解决了，但我还有几个疑问：</p>
+<ol>
+<li>为什么配置了 127.0.0.1 的 DNS server，但没有开启 DNSmasq 呢？</li>
+<li>为什么去掉 127.0.0.1 配置会无效呢？</li>
+</ol>
+<p>第 1 个问题比较好搞清楚，问了下系统部的同学，他说本来是应该开启 DNSmasq 的，但出了一点点小差错，结果只配置了 127.0.0.1。</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/86c369ec65da22bb12bcfbf6e9a52d70.jpeg" alt="img"></p>
+<p>再看第 2 个问题，DNS 本地缓存和远程查询差距这么大吗？据网络组同学说 DNS server 是公司内自建的，内网传输，实际并不慢，用 dig 也好测试，使用第 2、3 行的 DNS server 测试下，发现 dig 的速度都很快。</p>
+<blockquote>
+<p>dig <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> @host</p>
+</blockquote>
+<p>为什么有了 127.0.0.1 的配置就变得很慢呢？下面就从我的几个猜测入手，一个个证明，但在猜测之前，我们先了解一下 Go 程序解析 DNS 的流程。</p>
+<h3 id="Go-的-DNS-解析流程"><a href="#Go-的-DNS-解析流程" class="headerlink" title="Go 的 DNS 解析流程"></a>Go 的 DNS 解析流程</h3><p>Go 的 DNS 解析分为两种：</p>
+<ul>
+<li>cgo 方式，调用 c 语言标准库的实现</li>
+<li>纯 Go 代码实现</li>
+</ul>
+<p>由于要适配各个平台，所以又有了各个平台的实现。</p>
+<p>这部分代码位于<code>net</code>包下，想要跟踪也很简单，写个建立连接的代码，一步步 debug，找到域名解析的地方。</p>
+<p>我直接告诉你从<code>lookup_unix.go</code>文件的<code>lookupIP</code>方法看起，当然这只是 Unix 系统，包括 Mac 和 Linux，不过 Mac 不走纯 Go 的代码，它被强制走到 cgo 了，在 Linux 上没有特殊配置是走纯 Go 实现的 DNS 解析，以下代码以 Linux 为例：</p>
+<pre class="line-numbers language-none"><code class="language-none">func (r *Resolver) lookupIP(ctx context.Context, network, host string) (addrs []IPAddr, err error) {
+  // ①强制走纯Go的DNS解析器
+  if r.preferGo() {
+    return r.goLookupIP(ctx, host)
+  }
+  // ②根据解析顺序解析
+  order := systemConf().hostLookupOrder(r, host)
+  if order == hostLookupCgo {
+    if addrs, err, ok := cgoLookupIP(ctx, network, host); ok {
+      return addrs, err
+    }
+    // cgo not available (or netgo); fall back to Go's DNS resolver
+    // ③如果cgo搞不定，降级到先文件再DNS
+    order = hostLookupFilesDNS
+  }
+  ips, _, err := r.goLookupIPCNAMEOrder(ctx, host, order)
+  return ips, err
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>这里 order 有如下几种</p>
+<pre class="line-numbers language-none"><code class="language-none">hostLookupCgo      hostLookupOrder = iota // cgo
+hostLookupFilesDNS                 // 文件优先
+hostLookupDNSFiles                 // DNS优先
+hostLookupFiles                    // 只查文件
+hostLookupDNS                      // 只查DNS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里的文件也就是<code>/etc/hosts</code>，goLookupIP 最终也调用了 goLookupIPCNAMEOrder，但 goLookupIPCNAMEOrder 这个方法的代码太长，所以我这里只讲一下大致的流程：</p>
+<ol>
+<li>如果需要先查询 hosts 文件，则先查，查到直接返回</li>
+<li>读取/etc/resolv.conf 文件，拿出 DNS server 的配置，并且每 5 秒更新一次</li>
+<li>构造 DNS 请求并向服务器发送，UDP 读取的超时时间默认为 5 秒，可在/etc/resolv.conf 文件中配置，同一个域名的不同类型（如 ipv4 和 ipv6）的查询可配置为并行或串行</li>
+<li>向 DNS server 发送请求采用的是轮询机制，如果其中一个 server 请求出错，则顺延至下一个，重试次数默认为 2，可在/etc/resolv.conf 文件中配置</li>
+<li>最后解析查询结果并返回，如果结果为空，且配置了 hosts 文件兜底，则查询一次文件</li>
+</ol>
+<p>好了，流程简单介绍到这里，接下来验证我的几个猜想。</p>
+<h3 id="猜想一：Go-是否只在程序启动时读取一次-x2F-etc-x2F-resolv-conf-文件"><a href="#猜想一：Go-是否只在程序启动时读取一次-x2F-etc-x2F-resolv-conf-文件" class="headerlink" title="猜想一：Go 是否只在程序启动时读取一次/etc/resolv.conf 文件"></a>猜想一：Go 是否只在程序启动时读取一次/etc/resolv.conf 文件</h3><p>这个猜想的依据是，如果查询 DNS 时拿到了 127.0.0.1 的 DNS server，且本地未开启 DNS 服务时，可能会慢，且配置文件如果修改了，Go 程序如果只在初始化时读一次文件，那自然改配置文件无效。</p>
+<p>但事实并非如此，上面也说了，Go 在读取 DNS 配置文件时是惰性地每隔 5 秒更新一次</p>
+<pre class="line-numbers language-none"><code class="language-none">func (conf *resolverConfig) tryUpdate(name string) {
+  // 初始化，只做一次
+  conf.initOnce.Do(conf.init)
+  // ...
+  now := time.Now()
+  if conf.lastChecked.After(now.Add(-5 * time.Second)) {
+    return
+  }
+  conf.lastChecked = now
+  // ... 
+  dnsConf := dnsReadConfig(name)
+  conf.mu.Lock()
+  conf.dnsConfig = dnsConf
+  conf.mu.Unlock()
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>复制代码</p>
+<p>而且我做了个实验，写了个 DNS 解析的测试代码，放在有 127.0.0.1 配置但未开启 DNSmasq 的服务器上跑，抓 127.0.0.1 53 端口（DNS 默认端口）的包，发现是有流量的，然后修改/etc/resolv.conf 配置，去掉 127.0.0.1，发现抓不到 127.0.0.1 53 端口的流量了，这证明和代码逻辑一致，本猜想不成立。</p>
+<h3 id="猜想二：DNS-查询远程比本地慢很多"><a href="#猜想二：DNS-查询远程比本地慢很多" class="headerlink" title="猜想二：DNS 查询远程比本地慢很多"></a>猜想二：DNS 查询远程比本地慢很多</h3><p>这个很好证明，还是用上面的程序</p>
+<ol>
+<li>放在无 127.0.0.1 配置的服务器上跑</li>
+<li>放在有 127.0.0.1 配置且开启 DNSmasq 的服务器上跑</li>
+</ol>
+<p>结果两者耗时差不多，甚至他们和在有 127.0.0.1 配置但未开启 DNSmasq 的服务器上的耗时也基本一致。</p>
+<p>这说明无论怎样查询 DNS 都不慢。</p>
+<h3 id="猜想三：是否是并发太高导致"><a href="#猜想三：是否是并发太高导致" class="headerlink" title="猜想三：是否是并发太高导致"></a>猜想三：是否是并发太高导致</h3><p>为什么我会有这个猜想呢，一是线上的 QPS 大概是 50 左右，和上面测试的场景不太一样，二是我在上面的代码中看到了锁，是不是并发高了之后，锁带来的开销变大导致？</p>
+<p>我写了个 100 并发的代码，去查询 DNS，结果发现这段代码在如下三种场景，耗时都差不多</p>
+<ol>
+<li>无 127.0.0.1 配置的服务器</li>
+<li>有 127.0.0.1 配置且开启 DNSmasq 的服务器</li>
+<li>有 127.0.0.1 配置且未开启 DNSmasq 的服务器</li>
+</ol>
+<p>同时我也去问了网络组的同学，他说 DNS server 能抗住百万 QPS，服务端没有压力。</p>
+<p><img src="/2022/04/22/dns-jie-xi-jiao-man/297c3f83ab1c5582ad9f1584e0669121.jpeg" alt="img"></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>写到最后，我 emo 了~虽然问题解决了，但为什么当时 DNS 查询慢还是不知道，如果你看了文章知道其中哪里有问题，或者有什么比较好的排查方法，欢迎来探讨，反正我是查不下去了。</p>
+<p>最后再说一句，写文章很辛苦，需要点鼓励，来个<code>点赞</code>、<code>在看</code>、<code>关注</code>吧，我们下期再见。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">zhuzhiyong</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://zzyong24.github.io/2022/04/22/dns-jie-xi-jiao-man/">https://zzyong24.github.io/2022/04/22/dns-jie-xi-jiao-man/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">zhuzhiyong</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">网络</span>
+                                </a>
+                            
+                                <a href="/tags/DNS/">
+                                    <span class="chip bg-color">DNS</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/04/22/git-ji-qiao-xiao-neng-shou/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="git 技巧小能手">
+                        
+                        <span class="card-title">git 技巧小能手</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/04/20/ajax-chuan-ru-shu-zu-can-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="ajax 传入数组参数">
+                        
+                        <span class="card-title">ajax 传入数组参数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ajax/" class="post-category">
+                                    ajax
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ajax/">
+                        <span class="chip bg-color">ajax</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 月明水清深<br />'
+            + '文章作者: zhuzhiyong<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    </script>
+<footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">zhuzhiyong</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">41.8k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "4";
+                        var startDate = "9";
+                        var startHour = "12";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+                <span id="icp"><img src="/medias/icp.png"
+                                    style="vertical-align: text-bottom;"/>
+                <a href="https://www.beianx.cn/info/274669309276229" target="_blank">20220409324</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zzyong24" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1968286694@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1968286694" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1968286694" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
